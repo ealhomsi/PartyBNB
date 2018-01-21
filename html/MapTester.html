@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
        #map {
@@ -24,6 +24,16 @@
 
     <div id="createevent" class="tabcontent">
         <h3>Create Event</h3>
+        <form action="http://61671bcf.ngrok.io//events"> //username
+            Name: <input type="text" name="name"><br><br>
+            Longitude: <input type="text" name="lon"><br><br>
+            Latitude: <input type="text" name="lat"><br><br>
+            Date: <input type="date" name="date"><br><br>
+            Start time: <input type="time" name="startTime"><br><br>
+            End time: <input type="time" name="endTime"><br><br>
+            <input type='hidden' name="username" value="elias" /> <!--TODO add username from get -->  
+            <input type="submit" value="Submit">
+        </form>
     </div>
 
     <div id="myevents" class="tabcontent">
