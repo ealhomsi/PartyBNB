@@ -1,8 +1,10 @@
 body {
 	font-family: "Arial";
-	color:  rgb(28, 204, 12);
 	background-image: url("../images/backGround.jpg");
-	background-color: rgb(41, 150, 212);
+}
+
+#mainlogo {
+	width:30%;
 }
 
 
