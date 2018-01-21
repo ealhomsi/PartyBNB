@@ -63,7 +63,6 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    print("I see %d faces" % ((sum*5)/total_frames))
 
 res=int((sum*5)/total_frames)
 

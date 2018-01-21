@@ -279,5 +279,29 @@
       </loc>
       <organizer reference="24"/>
     </event>
+    <event id="92">
+      <name>ski</name>
+      <eventDate id="93">2131-12-21</eventDate>
+      <startTime id="94">13:12:00</startTime>
+      <endTime id="95">21:31:00</endTime>
+      <rating>0</rating>
+      <loc id="96">
+        <lon>33.32</lon>
+        <lat>33.33</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="97">
+      <name>adsf</name>
+      <eventDate id="98">2001-12-12</eventDate>
+      <startTime id="99">12:03:00</startTime>
+      <endTime id="100">12:12:00</endTime>
+      <rating>0</rating>
+      <loc id="101">
+        <lon>333.32</lon>
+        <lat>33.32</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
   </events>
 </manager>
