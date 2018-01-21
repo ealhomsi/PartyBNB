@@ -1,21 +1,29 @@
 import java.io.*;
-class PythonToJava{
+public class PythonToJava{
+    private static String parameter;
+    private static String script;
 
     public static void main(String[] argv){
-        if(argv.length<1){
-            System.out.println("Please specify a file to analyis");
-            return;
-        }
-        try{
-            Process p = Runtime.getRuntime().exec("./countFaces.py "+argv[0]);
-            BufferedReader stdOutput = new BufferedReader(new 
-                    InputStreamReader(p.getInputStream()));
+        PythonToJava converter=new PythonToJava("countFaces.py","sample2.jpg");
+        System.out.println(converter.exec());
+    }
 
-            System.out.print(Integer.parseInt(stdOutput.readLine()));
+    public PythonToJava(String script,String parameter){
+        this.script=script;
+        this.parameter=parameter;
+    }
+    
+    public static int exec(){
+        try{
+            Process p = Runtime.getRuntime().exec(script+" "+parameter);
+            BufferedReader stdOutput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            return Integer.parseInt(stdOutput.readLine());
         }catch(Exception e){
             e.printStackTrace();
             System.out.println(e);
             System.out.print("Execution failed\n");
+            return -1;
         }
-    }  
+        
+    }
 };
