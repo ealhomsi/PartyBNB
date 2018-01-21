@@ -1,0 +1,51 @@
+GENERAL INFO:
+the system keeps track of the people who created the event and the people who registered for it
+whenever trying to query non-exsistant user or event the system would reply with an error
+
+SHOW INFO (get requests)
+1) get all participants
+/participants/ or /participant
+
+2) get data related to a specific participant
+/participant/{name} or /participant/{name}/
+
+3) get data realted to a specific event
+/events/{name} or /events/{name}/
+
+4) get data for all events
+/events/ or /events
+
+5) get the location of a participant
+/participant/locations/{name} or /participant/locations/{name}/
+
+6) get the location of an event
+/events/locations/{name} or /events/locations/{name}/
+
+7) root
+/
+
+8) check all events a participant have registered for
+/registrations/participant/{name} or /registrations/paritcipant/{name}/
+
+9) show the creator of an event (name is the name of the event)
+/events/{name}/creator or /events/{name}/creator/
+
+10) show events created by someone
+/pariticipant/{name}/createdevents/ or /pariticipant/{name}/createdevents
+
+CREATE DATA (post requests)
+
+1) create a participant (lon and lan are for location)
+/participant/{name}?username=<string>&password=<string>&lon=<double>&lan=<double>
+or
+/participant/{name}/?username=<string>&password=<string>&lon=<double>&lan=<double>
+
+2) create an event (username is the person creating the event) (the format of the date and time should be followed)
+/events/{name}?date=yyyy-mm-dd&startTime=HH:mm&endTime=HH:mm&rating=<int>&lon=<double>&lan=<double>&username=<string>
+or
+/events/{name}/?date=yyyy-mm-dd&startTime=HH:mm&endTime=HH:mm&rating=<int>&lon=<double>&lan=<double>&username=<string>
+
+3) register a user for some event
+/register?participant=<string>&event=<string>
+or
+/register/?participant=<string>&event=<string>

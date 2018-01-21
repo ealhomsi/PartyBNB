@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Welcome to PartyBNB! </title>
+    </head>
+    <body>
+
+        <div class="container" id="body-background">
+            <div id="title">
+                <h1> Party BNB </h1>
+                <h3> The heart of the party </h3>
+                <img src="../images/logo.png" alt="PartyBNB" id="mainLogo">
+
+                <br>
+            </div>
+
+            <button class="mainButton" onclick="document.getElementById('id01').style.display='block'" style="padding:1.3em; width:auto; margin:1em;">Register</button>
+            <div id="id01" class="modal">      
+                <form class="modal-content animate" method="post" action="http://c7b67d7a.ngrok.io/participants">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <img src="../images/logo.png" alt="PartyBNB" class="avatar">
+                    </div>
+                    <div class="container">
+                        <label><i>Name</i></label>
+                        <br>
+                        <input type="text" placeholder="Name" name="name" required>
+                        <br>
+                        <label><i>Username</i></label>
+                        <br>
+                        <input type="text" placeholder="UserName" name="username" required>
+                        <br>
+                        <label><i>Password</i></label>
+                        <br>
+                        <input type="password" placeholder="********" name="password" required>
+                        <br>
+                        <br>
+
+                        <!-- location hidden -->
+                        <input type="hidden" name="lon" value="33.3" >
+                        <input type="hidden" name="lat" value="32.2" >
+
+                        <button type="submit">Register</button>
+                        <!--<label>
+                            <input type="checkbox" checked="checked"> Remember me
+                        </label>-->
+                    </div>
+                
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                            <b>Cancel</b>
+                        </button>
+                        <br>
+                        <br>
+
+                </form>
+            </div>
+            
+
+            <button onclick="document.getElementById('id02').style.display='block'" style="padding:1.3em; width:auto; margin:1em;">Login</button>
+            <div id="id02" class="modal">      
+                <form class="modal-content animate" method="post" action="http://c7b67d7a.ngrok.io/participants/login">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <img src="../images/logo.png" alt="PartyBNB" class="avatar">
+                    </div>
+                    <div class="container">
+                        <label><i>Username</i></label>
+                        <br>
+                        <input type="text" placeholder="UserName" name="username" required>
+                        <br>
+                        <label><i>Password</i></label>
+                        <br>
+                        <input type="password" placeholder="********" name="password" required>
+                        <br>
+                        <br>
+
+                        <!-- location hidden -->
+                        <input type="hidden" name="lon" value="33.3" >
+                        <input type="hidden" name="lat" value="32.2" >
+
+                        <button type="submit">Register</button>
+                        <!--<label>
+                            <input type="checkbox" checked="checked"> Remember me
+                        </label>-->
+                    </div>
+                
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">
+                            <b>Cancel</b>
+                        </button>
+                        <br>
+                        <br>
+
+                </form>
+            </div>
+                
+            <script>
+                var modal = document.getElementById('id01');
+                var modal2 = document.getElementById('id02');
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }else if(event.target == modal2) {
+                        modal2.style.display = "none";
+                    }
+                } 
+
+            </script>
+        </div>
+    </body>
+</html>

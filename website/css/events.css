@@ -1,0 +1,26 @@
+.nav-bar{
+    width:100%;
+    overflow:hidden
+}
+
+.nav-item{
+    padding:8px 16px;
+    float:left;
+    width:auto;
+    border:none;
+    outline:none;
+    display:block;
+}
+
+.nav-button{
+    white-space:normal;
+}
+
+.mobile-element{
+    text-align:center;
+}
+
+.colored-bar{
+    color:#fff!important;
+    background-color:#e6e1e1!important;
+}

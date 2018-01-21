@@ -1,0 +1,38 @@
+namespace com.partybnb.eventregistration.model;
+
+class Location {
+	double lon;
+	double lat;
+}
+class Participant
+{
+  name;
+  username;
+  password;
+  1 -> 1 Location loc;
+}
+
+class Event
+{
+  name;
+  Date eventDate;
+  Time startTime;
+  Time endTime;
+  int rating;
+  1-> 1 Location loc;
+  1-> 1 Participant organizer;
+}
+
+class Registration
+{
+  autounique id;
+  * -> 1 Participant participant;
+  * -> 1 Event event;
+}
+
+class RegistrationManager
+{
+  1 -> * Registration registrations;
+  1 -> * Participant participants;
+  1 -> * Event events;
+}
