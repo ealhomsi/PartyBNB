@@ -107,7 +107,7 @@ public class EventRegistrationRestController {
 	@CrossOrigin
 	@RequestMapping("/")
 	public String index() {
-		return "Event registration application root. Web-based frontend is a TODO. Use the REST API to manage events and participants.\n";
+		return "index";
 	}
 
 	@CrossOrigin
