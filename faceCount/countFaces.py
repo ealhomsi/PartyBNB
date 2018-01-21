@@ -36,13 +36,15 @@ while True:
 
     ret, frame = video_capture.read()
     total_frames+=1
+    if total_frames%5!=0:
+        continue
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = faceCascade.detectMultiScale(
         gray,
         scaleFactor=1.1,
-        minNeighbors=5,
+        minNeighbors=2,
         minSize=(5, 5)
     )
 
@@ -61,9 +63,9 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    cv2.imshow('Video', frame)
+    print("I see %d faces" % ((sum*5)/total_frames))
 
-res=int(sum/total_frames)
+res=int((sum*5)/total_frames)
 
 print(res)
 
