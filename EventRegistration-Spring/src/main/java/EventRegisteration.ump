@@ -1,8 +1,15 @@
-namespace ca.mcgill.ecse321.eventregistration.model;
+namespace com.partybnb.eventregistration.model;
 
+class Location {
+	double lon;
+	double lat;
+}
 class Participant
 {
   name;
+  username;
+  password;
+  1 -> 1 Location loc;
 }
 
 class Event
@@ -11,6 +18,9 @@ class Event
   Date eventDate;
   Time startTime;
   Time endTime;
+  int rating;
+  1-> 1 Location loc;
+  1-> 1 Participant organizer;
 }
 
 class Registration

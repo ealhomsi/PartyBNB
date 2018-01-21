@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.partybnb.eventregistration.model.Event;
+import com.partybnb.eventregistration.model.Location;
 import com.partybnb.eventregistration.model.Participant;
 import com.partybnb.eventregistration.model.Registration;
 import com.partybnb.eventregistration.model.RegistrationManager;
@@ -25,24 +26,41 @@ public class EventRegistrationService {
 		return name == null || name.trim().equals("");
 	}
 
-	public Participant createParticipant(String name) throws InvalidInputException {
+	public Location getParticipantLocation(String name) throws InvalidInputException {
+		Participant p = findParticipant(name) ;
+		if(p == null)
+			throw new InvalidInputException("Participant does not exists");
+		
+		return p.getLoc();
+	}
+	
+	public Location getEventLocation(String name) throws InvalidInputException {
+		Event e = findEvent(name);
+		if(e == null)
+			throw new InvalidInputException("Event is not found");
+		
+		return e.getLoc();
+	}
+	
+	public Participant createParticipant(String name, String username, String password, Location loc) throws InvalidInputException {
 		if (checkIfEmptyOrNull(name))
 			throw new InvalidInputException("Participant name cannot be empty!");
-		Participant p = new Participant(name);
+		
+		Participant p = new Participant(name, username, password, loc);
 		rm.addParticipant(p);
 		PersistenceXStream.saveToXMLwithXStream(rm);
 		return p;
 	}
 
-	public Event createEvent(String name, Date date, Time startTime, Time endTime) throws InvalidInputException {
-		if(name == null || date == null || startTime == null || endTime == null) 
+	public Event createEvent(String name, Date date, Time startTime, Time endTime, int rating, Location loc, Participant p) throws InvalidInputException {
+		if(name == null || date == null || startTime == null || endTime == null || loc == null || rating < 0) 
 			throw new InvalidInputException("Event name cannot be empty! Event date cannot be empty! Event start time cannot be empty! Event end time cannot be empty!");
 		else if (name.trim().contentEquals(""))
 			throw new InvalidInputException("Event name cannot be empty!");				
 		else if (startTime.compareTo(endTime) > 0)
 			throw new InvalidInputException("Event end time cannot be before event start time!");
 		
-		Event e = new Event(name, date, startTime, endTime);
+		Event e = new Event(name, date, startTime, endTime, rating, loc, p);
 		rm.addEvent(e);
 		PersistenceXStream.saveToXMLwithXStream(rm);
 
@@ -61,6 +79,15 @@ public class EventRegistrationService {
 		PersistenceXStream.saveToXMLwithXStream(rm);
 
 		return r;
+	}
+	
+	public boolean checkLogin(String name, String user, String pass) throws InvalidInputException {
+		Participant p = findParticipant(name);
+		
+		if(p.getUsername().equals(user) && p.getPassword().contentEquals(pass))
+			return true;
+		
+		return false;
 	}
 
 	public List<Event> findAllEvents() {

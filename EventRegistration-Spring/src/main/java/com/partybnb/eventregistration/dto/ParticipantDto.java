@@ -3,24 +3,28 @@ package com.partybnb.eventregistration.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.partybnb.eventregistration.model.Participant;
-import com.partybnb.eventregistration.model.Registration;
-import com.partybnb.eventregistration.model.RegistrationManager;
+import com.partybnb.eventregistration.model.Location;
 
 public class ParticipantDto {
 	private String name;
 	private List<EventDto> events;
+	private Location loc;
+	private String username;
+	private String password;
 
 	public ParticipantDto() {
 	}
 
 	public ParticipantDto(String name) {
-		this(name, new ArrayList<EventDto>());
+		this(name, new ArrayList<EventDto>(), new Location(0, 0), null, null);
 	}
 
-	public ParticipantDto(String name, ArrayList<EventDto> arrayList) {
+	public ParticipantDto(String name, ArrayList<EventDto> arrayList, Location loc, String username, String password) {
 		this.name = name;
 		this.events = arrayList;
+		this.loc= loc;
+		this.username = username;
+		this.password = password;
 	}
 	
 

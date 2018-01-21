@@ -1,21 +1,23 @@
 package com.patybnb.eventregistration.persistenece;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.sql.Date;
+import java.sql.Time;
+import java.util.Calendar;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.partybnb.eventregistration.model.Event;
+import com.partybnb.eventregistration.model.Location;
 import com.partybnb.eventregistration.model.Participant;
 import com.partybnb.eventregistration.model.Registration;
 import com.partybnb.eventregistration.model.RegistrationManager;
 import com.partybnb.eventregistration.persistence.PersistenceXStream;
-
-import java.io.File;
-import java.sql.Date;
-import java.sql.Time;
-import java.util.Calendar;
 
 public class TestPersistence {
 	private RegistrationManager rm;
@@ -25,9 +27,9 @@ public class TestPersistence {
 	    rm = new RegistrationManager();
 
 	    // create participants
-	    Participant pa = new Participant("Martin");
-	    Participant pa2 = new Participant("Jennifer");
-
+	    Participant pa = new Participant("Martin", "martin", "123", new Location(0, 0));
+	    Participant pa2 = new Participant("Jennifer", "jennifer", "1323", new Location(0, 0));
+	
 	    // create event
 	    Calendar c = Calendar.getInstance();
 	    c.set(2015,Calendar.SEPTEMBER,15,8,30,0);
@@ -35,7 +37,7 @@ public class TestPersistence {
 	    Time startTime = new Time(c.getTimeInMillis());
 	    c.set(2015,Calendar.SEPTEMBER,15,10,0,0);
 	    Time endTime = new Time(c.getTimeInMillis());
-	    Event ev = new Event("Concert", eventDate, startTime, endTime);
+	    Event ev = new Event("Concert", eventDate, startTime, endTime, 3, new Location(0, 0), null);
 
 	    // register participants to event
 	    Registration re = new Registration(pa, ev);

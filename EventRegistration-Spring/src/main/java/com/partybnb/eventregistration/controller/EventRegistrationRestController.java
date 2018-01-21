@@ -20,6 +20,7 @@ import com.partybnb.eventregistration.dto.EventDto;
 import com.partybnb.eventregistration.dto.ParticipantDto;
 import com.partybnb.eventregistration.dto.RegistrationDto;
 import com.partybnb.eventregistration.model.Event;
+import com.partybnb.eventregistration.model.Location;
 import com.partybnb.eventregistration.model.Participant;
 import com.partybnb.eventregistration.model.Registration;
 import com.partybnb.eventregistration.service.EventRegistrationService;
@@ -37,7 +38,6 @@ public class EventRegistrationRestController {
 	/**
 	 * SHOW
 	 */
-
 	@GetMapping(value = { "/participants/{name}", "/participants/{name}/" })
 	public ParticipantDto showParticipant(@PathVariable("name") String name) throws InvalidInputException {
 		return convertToDto(service.findParticipant(name));
@@ -66,6 +66,19 @@ public class EventRegistrationRestController {
 		}
 		return participants;
 	}
+	
+	@GetMapping(value = { "/participants/locations/{name}", "/participants/locations/{name}/" })
+	public Location findLocationOfParticipant(@PathVariable("name") String name) throws InvalidInputException {
+		Participant p = service.findParticipant(name);
+		return p.getLoc();
+	}
+	
+	@GetMapping(value = { "/events/locations/{name}", "/events/locations/{name}/" })
+	public Location findLocationOfEvent (@PathVariable("name") String name) throws InvalidInputException {
+		Event p = service.findEvent(name);
+		return p.getLoc();
+	}
+
 
 	@RequestMapping("/")
 	public String index() {
@@ -83,21 +96,25 @@ public class EventRegistrationRestController {
 	 */
 
 	@PostMapping(value = { "/participants/{name}", "/participants/{name}/" })
-	public ParticipantDto createParticipant(@PathVariable("name") String name) throws InvalidInputException {
-		Participant participant = service.createParticipant(name);
+	public ParticipantDto createParticipant(@PathVariable("name") String name, @RequestParam String username,
+			@RequestParam String password, @RequestParam double lon, @RequestParam double lan)
+			throws InvalidInputException {
+		String username2 = "" + username;
+		String password2 = "" + password;
+		Participant participant = service.createParticipant(name, username2, password2, new Location(lon, lan));
 		return convertToDto(participant);
 	}
 
 	@PostMapping(value = { "/events/{name}", "/events/{name}/" })
 	public EventDto createEvent(@PathVariable("name") String name, @RequestParam Date date,
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime startTime,
-			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime endTime)
-			throws InvalidInputException {
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime endTime,
+			@RequestParam int rating, @RequestParam double lon, @RequestParam double lat, @RequestParam String username) throws InvalidInputException {
 		@SuppressWarnings("deprecation")
 		Time startTimeSql = new Time(startTime.getHour(), startTime.getMinute(), 0);
 		@SuppressWarnings("deprecation")
 		Time endTimeSql = new Time(endTime.getHour(), endTime.getMinute(), 0);
-		Event event = service.createEvent(name, date, startTimeSql, endTimeSql);
+		Event event = service.createEvent(name, date, startTimeSql, endTimeSql, rating, new Location(lon, lat), service.findParticipant(username));
 		return convertToDto(event);
 	}
 

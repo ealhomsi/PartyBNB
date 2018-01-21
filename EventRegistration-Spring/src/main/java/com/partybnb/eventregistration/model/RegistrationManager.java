@@ -6,7 +6,7 @@ import java.util.*;
 import java.sql.Date;
 import java.sql.Time;
 
-// line 23 "../../../../../EventRegisteration.ump"
+// line 33 "../../../../EventRegisteration.ump"
 public class RegistrationManager
 {
 
@@ -69,7 +69,6 @@ public class RegistrationManager
     Participant aParticipant = participants.get(index);
     return aParticipant;
   }
-  
 
   public List<Participant> getParticipants()
   {

@@ -5,7 +5,7 @@ package com.partybnb.eventregistration.model;
 import java.sql.Date;
 import java.sql.Time;
 
-// line 8 "../../../../../EventRegisteration.ump"
+// line 15 "../../../../EventRegisteration.ump"
 public class Event
 {
 
@@ -18,17 +18,31 @@ public class Event
   private Date eventDate;
   private Time startTime;
   private Time endTime;
+  private int rating;
+
+  //Event Associations
+  private Location loc;
+  private Participant organizer;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Event(String aName, Date aEventDate, Time aStartTime, Time aEndTime)
+  public Event(String aName, Date aEventDate, Time aStartTime, Time aEndTime, int aRating, Location aLoc, Participant aOrganizer)
   {
     name = aName;
     eventDate = aEventDate;
     startTime = aStartTime;
     endTime = aEndTime;
+    rating = aRating;
+    if (!setLoc(aLoc))
+    {
+      throw new RuntimeException("Unable to create Event due to aLoc");
+    }
+    if (!setOrganizer(aOrganizer))
+    {
+      throw new RuntimeException("Unable to create Event due to aOrganizer");
+    }
   }
 
   //------------------------
@@ -67,6 +81,14 @@ public class Event
     return wasSet;
   }
 
+  public boolean setRating(int aRating)
+  {
+    boolean wasSet = false;
+    rating = aRating;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getName()
   {
     return name;
@@ -87,16 +109,59 @@ public class Event
     return endTime;
   }
 
+  public int getRating()
+  {
+    return rating;
+  }
+
+  public Location getLoc()
+  {
+    return loc;
+  }
+
+  public Participant getOrganizer()
+  {
+    return organizer;
+  }
+
+  public boolean setLoc(Location aNewLoc)
+  {
+    boolean wasSet = false;
+    if (aNewLoc != null)
+    {
+      loc = aNewLoc;
+      wasSet = true;
+    }
+    return wasSet;
+  }
+
+  public boolean setOrganizer(Participant aNewOrganizer)
+  {
+    boolean wasSet = false;
+    if (aNewOrganizer != null)
+    {
+      organizer = aNewOrganizer;
+      wasSet = true;
+    }
+    return wasSet;
+  }
+
   public void delete()
-  {}
+  {
+    loc = null;
+    organizer = null;
+  }
 
 
   public String toString()
   {
     return super.toString() + "["+
-            "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
+            "name" + ":" + getName()+ "," +
+            "rating" + ":" + getRating()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "eventDate" + "=" + (getEventDate() != null ? !getEventDate().equals(this)  ? getEventDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "startTime" + "=" + (getStartTime() != null ? !getStartTime().equals(this)  ? getStartTime().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "endTime" + "=" + (getEndTime() != null ? !getEndTime().equals(this)  ? getEndTime().toString().replaceAll("  ","    ") : "this" : "null");
+            "  " + "endTime" + "=" + (getEndTime() != null ? !getEndTime().equals(this)  ? getEndTime().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "loc = "+(getLoc()!=null?Integer.toHexString(System.identityHashCode(getLoc())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "organizer = "+(getOrganizer()!=null?Integer.toHexString(System.identityHashCode(getOrganizer())):"null");
   }
 }

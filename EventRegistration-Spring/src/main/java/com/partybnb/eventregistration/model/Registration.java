@@ -3,7 +3,7 @@
 
 package com.partybnb.eventregistration.model;
 
-// line 16 "../../../../../EventRegisteration.ump"
+// line 26 "../../../../EventRegisteration.ump"
 public class Registration
 {
 

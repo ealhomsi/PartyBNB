@@ -16,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.partybnb.eventregistration.model.Event;
+import com.partybnb.eventregistration.model.Location;
 import com.partybnb.eventregistration.model.Participant;
 import com.partybnb.eventregistration.model.Registration;
 import com.partybnb.eventregistration.model.RegistrationManager;
@@ -52,7 +53,7 @@ public class TestEventRegistrationService {
 	    assertEquals(0, rm.getRegistrations().size());
 
 	    String nameP = "Oscar";
-	    Participant participant = new Participant(nameP);
+	    Participant participant = new Participant(nameP, "oscar", "123", new Location(0, 0));
 	    assertEquals(0, rm.getParticipants().size());
 
 	    String nameE = "Soccer Game";
@@ -62,7 +63,7 @@ public class TestEventRegistrationService {
 	    Time startTime = new Time(c.getTimeInMillis());
 	    c.set(2016, Calendar.OCTOBER, 16, 10, 30, 0);
 	    Time endTime = new Time(c.getTimeInMillis());
-	    Event event = new Event(nameE, eventDate, startTime, endTime);
+	    Event event = new Event(nameE, eventDate, startTime, endTime, 3, new Location(0, 0), null);
 	    assertEquals(0, rm.getEvents().size());
 
 	    String error = null;
@@ -92,8 +93,8 @@ public class TestEventRegistrationService {
 		String eventName = "b";
 		EventRegistrationService erc = new EventRegistrationService(rm);
 		try {
-			erc.createParticipant(participantName);
-			erc.createEvent(eventName, new Date(1), new Time(1), new Time(1));
+			erc.createParticipant(participantName, "username", "password", new Location(0, 0));
+			erc.createEvent(eventName, new Date(1), new Time(1), new Time(1), 3 , new Location(0,0), null);
 		} catch (InvalidInputException e) {
 			// Check that no error occured
 			fail();
@@ -117,15 +118,6 @@ public class TestEventRegistrationService {
 		assertEquals(name, rm2.getEvent(0).getName());
 		
 	}
-	private void checkResultRegistration(String participantName, String eventName, RegistrationManager rm2) {
-		assertEquals(1, rm2.getRegistrations().size());
-		Registration r = rm2.getRegistration(0);
-		assertEquals(participantName, r.getParticipant().getName());
-		assertEquals(eventName, r.getEvent().getName());
-		
-		
-	}
-	
 	@Test
 	public void testCreateEvent() {
 	  RegistrationManager rm = new RegistrationManager();
@@ -141,7 +133,7 @@ public class TestEventRegistrationService {
 	  // test model in memory
 	  EventRegistrationService erc = new EventRegistrationService(rm);
 	  try {
-	    erc.createEvent(name, eventDate, startTime, endTime);
+	    erc.createEvent(name, eventDate, startTime, endTime, 3, new Location(0, 0),null);
 	  } catch (InvalidInputException e) {
 	    fail();
 	  }
@@ -159,7 +151,7 @@ public class TestEventRegistrationService {
 	  assertEquals(0, rm.getRegistrations().size());
 
 	  String nameP = "Oscar";
-	  Participant participant = new Participant(nameP);
+	  Participant participant = new Participant(nameP, "username", "password", new Location(0,0));
 	  rm.addParticipant(participant);
 	  assertEquals(1, rm.getParticipants().size());
 
@@ -170,7 +162,7 @@ public class TestEventRegistrationService {
 	  Time startTime = new Time(c.getTimeInMillis());
 	  c.set(2017, Calendar.MARCH, 16, 10, 30, 0);
 	  Time endTime = new Time(c.getTimeInMillis());
-	  Event event = new Event(nameE, eventDate, startTime, endTime);
+	  Event event = new Event(nameE, eventDate, startTime, endTime, 3, new Location(0,0), null);
 	  rm.addEvent(event);
 	  assertEquals(1, rm.getEvents().size());
 
@@ -199,7 +191,7 @@ public class TestEventRegistrationService {
 	    EventRegistrationService erc = new EventRegistrationService(rm);
 	    for (String name : names) {
 	        try {
-	            erc.createParticipant(name);
+	            erc.createParticipant(name, "username", "password", new Location(0,0));
 	        } catch (InvalidInputException e) {
 	            // Check that no error occured
 	            fail();
@@ -233,7 +225,7 @@ public class TestEventRegistrationService {
 	  String error = null;
 	  EventRegistrationService erc = new EventRegistrationService(rm);
 	  try {
-	      erc.createEvent(name, eventDate, startTime, endTime);
+	      erc.createEvent(name, eventDate, startTime, endTime, 3, new Location(0,0), null);
 	  } catch (InvalidInputException e) {
 	      error = e.getMessage();
 	  }
@@ -256,7 +248,7 @@ public class TestEventRegistrationService {
 	  String error = null;
 	  EventRegistrationService erc = new EventRegistrationService(rm);
 	  try {
-	      erc.createEvent(name, eventDate, startTime, endTime);
+	      erc.createEvent(name, eventDate, startTime, endTime, 3, new Location(0,0), null);
 	  } catch (InvalidInputException e) {
 	      error = e.getMessage();
 	  }
@@ -313,7 +305,7 @@ public class TestEventRegistrationService {
 	  String error = null;
 	  EventRegistrationService erc = new EventRegistrationService(rm);
 	  try {
-	      erc.createEvent(name, eventDate, startTime, endTime);
+	      erc.createEvent(name, eventDate, startTime, endTime, 3, new Location(0,0), null);
 	  } catch (InvalidInputException e) {
 	      error = e.getMessage();
 	  }
@@ -340,7 +332,7 @@ public class TestEventRegistrationService {
 	  String error = null;
 	  EventRegistrationService erc = new EventRegistrationService(rm);
 	  try {
-	      erc.createEvent(name, eventDate, startTime, endTime);
+	      erc.createEvent(name, eventDate, startTime, endTime, 3, new Location(0, 0), null);
 	  } catch (InvalidInputException e) {
 	      error = e.getMessage();
 	  }
