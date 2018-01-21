@@ -23,7 +23,7 @@
         <div id="map"></div>
     </div>
 
-    <div id="createevent" class="form-group" font-family: "Comic Sans MS">
+    <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
         <h3>Create Event</h3>
         <form action="http://c7b67d7a.ngrok.io/events" method="post">
             Name: <input type="text" name="name"><br><br>
@@ -86,7 +86,8 @@
                     
                     position : {'lat' : data[i].loc.lat, 'lng': data[i].loc.lon},
                     title : data[i].name,
-                    organiser: data[i].organizer,
+                    organizer: data[i].organizer,
+                    eventDate: data[i].eventDate,
                     endTime: data[i].endTime,
                     startTime: data[i].startTime,
                     draggable: true,
@@ -95,8 +96,8 @@
                 });
                 console.log(marker.title);
                 google.maps.event.addListener(marker, 'click', function() {
-                    console.log(this.title);
-                    var contentString = "<html><h2>"+this.title+"</h2></html>"
+                    console.log(this.title + "---"+this.eventDate);
+                    var contentString = "<div class='black'><h2>"+this.title+"</h2> <p>Date: "+this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);
                 });
