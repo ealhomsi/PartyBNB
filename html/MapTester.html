@@ -11,18 +11,19 @@
     </style>
   </head>
   <body>
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'mapview')">Event Map</button>
-        <button class="tablinks" onclick="openTab(event, 'createevent')">Create Event</button>
-        <button class="tablinks" onclick="openTab(event, 'myevents')">My Events</button>
+    <img src="../images/logo.png" alt="PartyBnB" width="350px" height="350px">
+    <div class="tab" background-color="#2996d4">
+        <button class="myButton" onclick="openTab(event, 'mapview')">Event Map</button>
+        <button class="myButton" onclick="openTab(event, 'createevent')">Create Event</button>
+        <button class="myButton" onclick="openTab(event, 'myevents')">My Events</button>
     </div>
 
     <div id="mapview" class="tabcontent" style="display:block">
-        <h3>Map</h3>
+        <h3>Look for nearby events!</h3>
         <div id="map"></div>
     </div>
 
-    <div id="createevent" class="tabcontent">
+    <div id="createevent" class="form-group" font-family: "Comic Sans MS">
         <h3>Create Event</h3>
         <form action="http://c7b67d7a.ngrok.io/events" method="post">
             Name: <input type="text" name="name"><br><br>
@@ -31,6 +32,7 @@
             Date: <input type="date" name="date"><br><br>
             Start time: <input type="time" name="startTime"><br><br>
             End time: <input type="time" name="endTime"><br><br>
+
             <input type='hidden' name="username" value="elias" /> <!--TODO add username from get -->  
             <input type="submit" value="Submit">
         </form>
@@ -157,6 +159,6 @@
 
         
     </script>
-    
+
   </body>
 </html>
