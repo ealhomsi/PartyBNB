@@ -24,10 +24,10 @@
 
     <div id="createevent" class="tabcontent">
         <h3>Create Event</h3>
-        <form action="http://61671bcf.ngrok.io//events"> //username
+        <form action="http://c7b67d7a.ngrok.io/events" method="post">
             Name: <input type="text" name="name"><br><br>
-            Longitude: <input type="text" name="lon"><br><br>
             Latitude: <input type="text" name="lat"><br><br>
+            Longitude: <input type="text" name="lon"><br><br>
             Date: <input type="date" name="date"><br><br>
             Start time: <input type="time" name="startTime"><br><br>
             End time: <input type="time" name="endTime"><br><br>
@@ -48,6 +48,7 @@
     <script>
         var montreal = { lat: 45.506485, lng: -73.612543 }
         var markers = [];
+        var infowindow;
         var map;
 
         //Tab control
@@ -69,38 +70,61 @@
         $(document).ready(function () {
             console.log(">fct Document Ready");
 
-            //TODO remove
-            return;
-            $.get("getEventsURL",receiveEvent)
+            $.get("http://c7b67d7a.ngrok.io/events",receiveEvent)
+            console.log("Send request for event list");
         });
 
         //Get executed after info about event was received, after page was loaded
         function receiveEvent(data, status){
             console.log(">fct Received Data");
-            alert("Data: " + data + "\nStatus: " + status);
+            //alert("Data: " + data + "\nStatus: " + status);
 
             for(var i=0; i< data.length; i++){
                 var marker = new google.maps.Marker({
-                    position : data[i].position,
+                    
+                    position : {'lat' : data[i].loc.lat, 'lng': data[i].loc.lon},
                     title : data[i].name,
+                    organiser: data[i].organizer,
+                    endTime: data[i].endTime,
+                    startTime: data[i].startTime,
                     draggable: true,
                     animation: google.maps.Animation.DROP,
                     map : map
                 });
+                console.log(marker.title);
+                google.maps.event.addListener(marker, 'click', function() {
+                    console.log(this.title);
+                    var contentString = "<html><h2>"+this.title+"</h2></html>"
+                    infowindow.setContent(contentString);
+                    infowindow.open(map, this);
+                });
+
+                /*
+                marker.addListener('click', function() {
+                    var contentString = "<html><h2>"+marker.title+"</h2></html>"
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    infowindow.open(map, marker);
+                });*/
                 markers.push(marker);
+
             }
+
         }
 
 
         
         function initMap() {
             console.log(">fct Init Map")
+            infowindow = new google.maps.InfoWindow();
             map = new google.maps.Map(document.getElementById('map'), {
                 center: montreal,
-                zoom: 12
+                zoom: 14
             });
 
-            var marker = new google.maps.Marker({
+            /*var marker = new google.maps.Marker({
                 position: montreal,
                 title: "Polytechnique Pin",
                 map: map
@@ -108,14 +132,7 @@
 
             
 
-            marker.addListener('click', function() {
-                var contentString = "<html>"+marker.title+"</html>"
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-                infowindow.open(map, marker);
-            });
+            */
 
             //marker.addListener('click', toggleBounce);
             
