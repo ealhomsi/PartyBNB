@@ -15,6 +15,7 @@
         <button class="myButton tablinks" onclick="openTab(event, 'createevent')">Create Event</button>
         <button class="myButton tablinks" onclick="openTab(event, 'myevents')">My Events</button>
     </div>
+    <br><br>
 
     <div id="mapview" class="tabcontent" style="display:block">
         <h3>Look for nearby events!</h3><br>
@@ -24,8 +25,9 @@
     </div>
 
     <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
+        <br><br><br>
         <h2>Create Event</h2>
-        <form action="http://c7b67d7a.ngrok.io/events" method="post" id="form1">
+        <form action="http://c7b67d7a.ngrok.io/events" method="post">
             Name: <br><input type="text" name="name"><br><br>
             Latitude: <br><input type="text" name="lat"><br><br>
             Longitude: <br><input type="text" name="lon"><br><br>
@@ -33,17 +35,21 @@
             Start time: <br><input type="time" name="startTime"><br><br>
             End time: <br><input type="time" name="endTime"><br><br>
 
-            <input type='hidden' name="username" id="hidden1" value="" />
+            <input type='hidden' name="username" value="elias" /> <!--TODO add username from get -->  
             <input type="submit" value="Submit">
         </form>
     </div>
 
     <div id="myevents" class="tabcontent">
         <h3>My Events</h3>
+        <div id="resultEvents">
+        </div>
     </div>
 
 
     <div id="map"></div>
+
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqgf8KEOTpCrDnGKJGgzdILlP3-Qlhlto&callback=initMap">
     </script>
@@ -52,7 +58,6 @@
         var markers = [];
         var infowindow;
         var map;
-        var loggedUser;
 
         //Tab control
         function openTab(evt, tabName) {
@@ -73,10 +78,6 @@
         $(document).ready(function () {
             console.log(">fct Document Ready");
 
-            var loggedUser = window.location.search.substr(1).split('=')[1];
-            document.getElementById('hidden1').value = loggedUser;
-            //console.log("!!!ussr: "+username);
-
             $.get("http://c7b67d7a.ngrok.io/events",receiveEvent)
             console.log("Send request for event list");
         });
@@ -85,7 +86,6 @@
         function receiveEvent(data, status){
             console.log(">fct Received Data");
             //alert("Data: " + data + "\nStatus: " + status);
-            
 
             for(var i=0; i< data.length; i++){
                 var marker = new google.maps.Marker({
@@ -96,16 +96,14 @@
                     eventDate: data[i].eventDate,
                     endTime: data[i].endTime,
                     startTime: data[i].startTime,
+                    draggable: true,
                     animation: google.maps.Animation.DROP,
                     map : map
                 });
                 console.log(marker.title);
                 google.maps.event.addListener(marker, 'click', function() {
                     console.log(this.title + "---"+this.eventDate);
-                    var contentString = "<div class='black'><h2>"+this.title+"</h2><br>Live stream: <br>"+
-                    '<br><iframe id="myVideo" width="250" height="200" src="https://www.youtube.com/embed/pqFoK1A09cI?autoplay=1&loop=1&controls=0&showinfo=0&mute=1"></iframe>'+
-                    "<p>Date: "+
-                    this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
+                    var contentString = "<div class='black'><h2>"+this.title+"</h2> <p>Date: "+this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);
                 });
@@ -124,6 +122,7 @@
             }
 
         }
+
 
         function initMap() {
             console.log(">fct Init Map")
@@ -156,48 +155,6 @@
             }
         }
 
-
-        //~~~~Youtube player~~~~~~
-        /*var tag = document.createElement('script1');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script1')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // 3. This function creates an <iframe> (and YouTube player)
-        //    after the API code downloads.
-        var player;
-        function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '360',
-            width: '640',
-            videoId: 'M7lc1UVf-VE',
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-        }
-
-        // 4. The API will call this function when the video player is ready.
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        var done = false;
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-                setTimeout(stopVideo, 6000);
-                done = true;
-            }
-        }
-        function stopVideo() {
-            player.stopVideo();
-        }
-*/
         //TODO
         /*
         - Get event info

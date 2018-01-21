@@ -128,7 +128,7 @@ public class EventRegistrationRestController {
 		if(participant == null)
 			throw new InvalidInputException("Combination username and password is wrong");
 		
-		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/MapTester.html\";</script>";
+		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/MapTester.html?username=" + participant.getName() + "\";</script>";
 	}
 
 	@PostMapping(value = { "/participants", "/participants/" })
