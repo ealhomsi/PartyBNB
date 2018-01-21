@@ -8,9 +8,9 @@ from time import sleep
 
 cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
-log.basicConfig(filename='webcam.log',level=log.INFO)
 
-if os.path.splitext(sys.argv[1])[1]=='.jpg':
+ext=os.path.splitext(sys.argv[1])[1]
+if ext=='.jpg' or ext=='.gif' or ext=='.jpeg' or ext=='.png':
     image=cv2.imread(sys.argv[1],0)
     faces = faceCascade.detectMultiScale(
         image,
@@ -54,7 +54,6 @@ while True:
 
     if anterior != len(faces):
         anterior = len(faces)
-        log.info("faces: "+str(len(faces))+" at "+str(dt.datetime.now()))
 
 
     cv2.imshow('Video', frame)
