@@ -3,15 +3,13 @@
   <head>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-       #map {
-        height: 800px;
-        width: 100%;
-       }
-    </style>
   </head>
   <body>
-    <img src="../images/logo.png" alt="PartyBnB" id="mainlogo">
+    <header>
+        <img src="../images/logo.png" alt="PartyBnB" id="mainlogo">
+        <h1> PartyBnB </h1>
+    </header>
+
     <div class="tab" background-color="#2996d4">
         <button class="myButton tablinks" onclick="openTab(event, 'mapview')">Event Map</button>
         <button class="myButton tablinks" onclick="openTab(event, 'createevent')">Create Event</button>
@@ -19,19 +17,21 @@
     </div>
 
     <div id="mapview" class="tabcontent" style="display:block">
-        <h3>Look for nearby events!</h3>
-        <div id="map"></div>
+        <h3>Look for nearby events!</h3><br>
+        <div id="mapContainer">
+            <div id="map"></div>
+        </div>
     </div>
 
-    <div id="createevent" class="form-group" font-family: "Comic Sans MS">
-        <h3>Create Event</h3>
+    <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
+        <h2>Create Event</h2>
         <form action="http://c7b67d7a.ngrok.io/events" method="post">
-            Name: <input type="text" name="name"><br><br>
-            Latitude: <input type="text" name="lat"><br><br>
-            Longitude: <input type="text" name="lon"><br><br>
-            Date: <input type="date" name="date"><br><br>
-            Start time: <input type="time" name="startTime"><br><br>
-            End time: <input type="time" name="endTime"><br><br>
+            Name: <br><input type="text" name="name"><br><br>
+            Latitude: <br><input type="text" name="lat"><br><br>
+            Longitude: <br><input type="text" name="lon"><br><br>
+            Date: <br><input type="date" name="date"><br><br>
+            Start time: <br><input type="time" name="startTime"><br><br>
+            End time: <br><input type="time" name="endTime"><br><br>
 
             <input type='hidden' name="username" value="elias" /> <!--TODO add username from get -->  
             <input type="submit" value="Submit">
@@ -86,7 +86,8 @@
                     
                     position : {'lat' : data[i].loc.lat, 'lng': data[i].loc.lon},
                     title : data[i].name,
-                    organiser: data[i].organizer,
+                    organizer: data[i].organizer,
+                    eventDate: data[i].eventDate,
                     endTime: data[i].endTime,
                     startTime: data[i].startTime,
                     draggable: true,
@@ -95,8 +96,8 @@
                 });
                 console.log(marker.title);
                 google.maps.event.addListener(marker, 'click', function() {
-                    console.log(this.title);
-                    var contentString = "<html><h2>"+this.title+"</h2></html>"
+                    console.log(this.title + "---"+this.eventDate);
+                    var contentString = "<div class='black'><h2>"+this.title+"</h2> <p>Date: "+this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);
                 });
@@ -117,7 +118,6 @@
         }
 
 
-        
         function initMap() {
             console.log(">fct Init Map")
             infowindow = new google.maps.InfoWindow();
