@@ -103,7 +103,13 @@
                 console.log(marker.title);
                 google.maps.event.addListener(marker, 'click', function() {
                     console.log(this.title + "---"+this.eventDate);
-                    var contentString = "<div class='black'><h2>"+this.title+"</h2> <p>Date: "+this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
+                    var contentString = "<div class='black'><h2>"+this.title+"</h2> <p>Date: "+
+                    this.eventDate+'<br>Start time: '+this.startTime+'"<br>Organizer: '+this.organizer+'</html>'+
+                    '<form action="upload.php" method="post" enctype="multipart/form-data">'+
+                    '   <input type="file" name="fileToUpload" id="fileToUpload">'+
+                    '    <input type="submit" value="Upload Image" name="submit">'+
+                    '<input type=hidden value='+this.title+'>'+
+                    '</form>'
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);
                 });
