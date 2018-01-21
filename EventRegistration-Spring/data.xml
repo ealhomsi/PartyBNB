@@ -118,123 +118,150 @@
         <lat>32.2</lat>
       </loc>
     </participant>
-  </participants>
-  <events id="30">
-    <event id="31">
-      <name>party1</name>
-      <eventDate id="32">1995-12-08</eventDate>
-      <startTime id="33">10:44:00</startTime>
-      <endTime id="34">11:44:00</endTime>
-      <rating>4</rating>
+    <participant id="30">
+      <name>dfsasa</name>
+      <username>fasfadfsaf</username>
+      <password>safsdff</password>
+      <loc id="31">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+    <participant id="32">
+      <name>dfsasa</name>
+      <username>fasfadfsaf</username>
+      <password>safsdff</password>
+      <loc id="33">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+    <participant id="34">
+      <name>elias</name>
+      <username>elias</username>
+      <password>elias</password>
       <loc id="35">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+  </participants>
+  <events id="36">
+    <event id="37">
+      <name>party1</name>
+      <eventDate id="38">1995-12-08</eventDate>
+      <startTime id="39">10:44:00</startTime>
+      <endTime id="40">11:44:00</endTime>
+      <rating>4</rating>
+      <loc id="41">
         <lon>45.344</lon>
         <lat>-74.4344</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="36">
+    <event id="42">
       <name>elias</name>
-      <eventDate id="37">1999-11-11</eventDate>
-      <startTime id="38">11:33:00</startTime>
-      <endTime id="39">11:34:00</endTime>
+      <eventDate id="43">1999-11-11</eventDate>
+      <startTime id="44">11:33:00</startTime>
+      <endTime id="45">11:34:00</endTime>
       <rating>0</rating>
-      <loc id="40">
+      <loc id="46">
         <lon>3.3</lon>
         <lat>33.33</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="41">
+    <event id="47">
       <name>sadfsafddfs</name>
-      <eventDate id="42">1311-11-11</eventDate>
-      <startTime id="43">13:01:00</startTime>
-      <endTime id="44">15:01:00</endTime>
+      <eventDate id="48">1311-11-11</eventDate>
+      <startTime id="49">13:01:00</startTime>
+      <endTime id="50">15:01:00</endTime>
       <rating>0</rating>
-      <loc id="45">
+      <loc id="51">
         <lon>33.3</lon>
         <lat>33.3</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="46">
+    <event id="52">
       <name>grd</name>
-      <eventDate id="47">1998-01-01</eventDate>
-      <startTime id="48">11:01:00</startTime>
-      <endTime id="49">13:00:00</endTime>
+      <eventDate id="53">1998-01-01</eventDate>
+      <startTime id="54">11:01:00</startTime>
+      <endTime id="55">13:00:00</endTime>
       <rating>0</rating>
-      <loc id="50">
+      <loc id="56">
         <lon>45.0</lon>
         <lat>56.0</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="51">
+    <event id="57">
       <name>grd</name>
-      <eventDate id="52">1998-01-01</eventDate>
-      <startTime id="53">11:01:00</startTime>
-      <endTime id="54">13:00:00</endTime>
+      <eventDate id="58">1998-01-01</eventDate>
+      <startTime id="59">11:01:00</startTime>
+      <endTime id="60">13:00:00</endTime>
       <rating>0</rating>
-      <loc id="55">
+      <loc id="61">
         <lon>45.0</lon>
         <lat>56.0</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="56">
+    <event id="62">
       <name>McGill Gerts</name>
-      <eventDate id="57">2018-01-23</eventDate>
-      <startTime id="58">21:01:00</startTime>
-      <endTime id="59">23:49:00</endTime>
+      <eventDate id="63">2018-01-23</eventDate>
+      <startTime id="64">21:01:00</startTime>
+      <endTime id="65">23:49:00</endTime>
       <rating>0</rating>
-      <loc id="60">
+      <loc id="66">
         <lon>45.5057</lon>
         <lat>-73.57644</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="61">
+    <event id="67">
       <name>McGill OAP</name>
-      <eventDate id="62">2018-01-20</eventDate>
-      <startTime id="63">20:00:00</startTime>
-      <endTime id="64">23:30:00</endTime>
+      <eventDate id="68">2018-01-20</eventDate>
+      <startTime id="69">20:00:00</startTime>
+      <endTime id="70">23:30:00</endTime>
       <rating>0</rating>
-      <loc id="65">
+      <loc id="71">
         <lon>-73.575652</lon>
         <lat>45.504013</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="66">
+    <event id="72">
       <name>Open Oratoire LIT</name>
-      <eventDate id="67">2018-01-20</eventDate>
-      <startTime id="68">20:00:00</startTime>
-      <endTime id="69">23:30:00</endTime>
+      <eventDate id="73">2018-01-20</eventDate>
+      <startTime id="74">20:00:00</startTime>
+      <endTime id="75">23:30:00</endTime>
       <rating>0</rating>
-      <loc id="70">
+      <loc id="76">
         <lon>-73.618521</lon>
         <lat>45.504013</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="71">
+    <event id="77">
       <name>Hackatown 2018</name>
-      <eventDate id="72">2018-01-20</eventDate>
-      <startTime id="73">08:00:00</startTime>
-      <endTime id="74">16:00:00</endTime>
+      <eventDate id="78">2018-01-20</eventDate>
+      <startTime id="79">08:00:00</startTime>
+      <endTime id="80">16:00:00</endTime>
       <rating>0</rating>
-      <loc id="75">
+      <loc id="81">
         <lon>45.492416</lon>
         <lat>-73.618521</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="76">
+    <event id="82">
       <name>Hackatown 2018</name>
-      <eventDate id="77">2018-01-20</eventDate>
-      <startTime id="78">08:00:00</startTime>
-      <endTime id="79">16:00:00</endTime>
+      <eventDate id="83">2018-01-20</eventDate>
+      <startTime id="84">08:00:00</startTime>
+      <endTime id="85">16:00:00</endTime>
       <rating>0</rating>
-      <loc id="80">
+      <loc id="86">
         <lon>-73.613033</lon>
         <lat>45.504361</lat>
       </loc>
