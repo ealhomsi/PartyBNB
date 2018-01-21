@@ -116,7 +116,7 @@ public class EventRegistrationRestController {
 	@CrossOrigin
 	@RequestMapping("/")
 	public String index() {
-		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/index.html\";</script>";
+		return "<script> window.location = \"http://fb6b51c7.ngrok.io/html/index.html\";</script>";
 	}
 
 	@CrossOrigin
@@ -130,6 +130,18 @@ public class EventRegistrationRestController {
 	 * CREATE
 	 */
 
+	@GetMapping(value = { "/events/updaterating/", "/events/updaterating" })
+	public String login(@RequestParam String name, @RequestParam int rating)
+			throws InvalidInputException {
+		Event e = service.findEvent(name);
+		if(e == null)
+			throw new InvalidInputException("event was not found");
+		
+		e.setRating(rating);
+		
+		return "<script> window.location = \"http://fb6b51c7.ngrok.io/html/MapTester.html\";</script>";
+	}
+	
 	@PostMapping(value = { "/participants/login", "/participants/login/" })
 	public String login(@RequestParam String username, @RequestParam String password)
 			throws InvalidInputException {
@@ -137,7 +149,7 @@ public class EventRegistrationRestController {
 		if(participant == null)
 			throw new InvalidInputException("Combination username and password is wrong");
 		
-		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/MapTester.html?username=" + participant.getName() + "\";</script>";
+		return "<script> window.location = \"http://fb6b51c7.ngrok.io/html/MapTester.html?username=" + participant.getName() + "\";</script>";
 	}
 
 	@PostMapping(value = { "/participants", "/participants/" })
@@ -182,7 +194,7 @@ public class EventRegistrationRestController {
 		EventDto d = modelMapper.map(e, EventDto.class);
 		d.setLoc(e.getLoc());
 		d.setOrganizer(e.getOrganizer().getName());
-		;
+		d.setRating(e.getRating());
 		return d;
 	}
 

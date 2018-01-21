@@ -1,5 +1,5 @@
 <?php
-$eventname = $_POST['eventname'];
+$eventname = $_POST["eventname"];
 if(! $eventname) {
     die("event was not provided");
 }
@@ -38,7 +38,33 @@ if ($uploadOk == 0) {
 }
 
 //now call the thing
-$result=http_get("http://c7b67d7a.ngrok.io/" . $_FILES["fileToUpload"]["name"] ."/")
 
-echo $result
+$curl = curl_init();
+// Set some options - we are passing in a useragent too here
+curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => "http://e53620ff.ngrok.io/run/" . $_FILES["fileToUpload"]["name"] ."/",
+    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+));
+// Send the request & save response to $resp
+$resp = curl_exec($curl);
+// Close request to clear up some resources
+curl_close($curl);
+
+$curl = curl_init();
+// Set some options - we are passing in a useragent too here
+curl_setopt_array($curl, array(
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => "http://e53620ff.ngrok.io/events/updaterating?name=" .$eventname . "&rating=" . $resp,
+    CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+));
+// Send the request & save response to $resp
+$resp = curl_exec($curl);
+// Close request to clear up some resources
+curl_close($curl);
+
+
+header("Location: http://fb6b51c7.ngrok.io/html/MapTester.html");
+exit();
 ?>
+

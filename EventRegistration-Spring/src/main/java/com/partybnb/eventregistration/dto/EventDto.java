@@ -12,22 +12,32 @@ public class EventDto {
 	private Time endTime;
 	private String organizer;
 	private Location loc;
+	private int rating;
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 
 	public EventDto() {
 
 	}
 
 	public EventDto(String name) {
-		this(name, Date.valueOf("1971-01-01"), Time.valueOf("00:00:00"), Time.valueOf("23:59:59"), null, null);
+		this(name, Date.valueOf("1971-01-01"), Time.valueOf("00:00:00"), Time.valueOf("23:59:59"), null, null, 0);
 	}
 
-	public EventDto(String name, Date eventDate, Time startTime, Time endTime, ParticipantDto p, Location loc) {
+	public EventDto(String name, Date eventDate, Time startTime, Time endTime, ParticipantDto p, Location loc, int rating) {
 		this.name = name;
 		this.eventDate = eventDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.organizer = p.getName();
 		this.loc = loc;
+		this.rating = rating;
 	}
 
 

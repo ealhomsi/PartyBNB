@@ -27,7 +27,7 @@
     <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
         <br><br><br>
         <h2>Create Event</h2>
-        <form action="http://c7b67d7a.ngrok.io/events" method="post">
+        <form action="http://e53620ff.ngrok.io/events" method="post">
             Name: <br><input type="text" name="name"><br><br>
             Latitude: <br><input type="text" name="lat"><br><br>
             Longitude: <br><input type="text" name="lon"><br><br>
@@ -78,7 +78,7 @@
         $(document).ready(function () {
             console.log(">fct Document Ready");
 
-            $.get("http://c7b67d7a.ngrok.io/events",receiveEvent)
+            $.get("http://e53620ff.ngrok.io/events",receiveEvent)
             console.log("Send request for event list");
         });
 
@@ -97,6 +97,7 @@
                     endTime: data[i].endTime,
                     startTime: data[i].startTime,
                     draggable: true,
+                    rating: data[i].rating,
                     animation: google.maps.Animation.DROP,
                     map : map
                 });
@@ -109,7 +110,7 @@
                     '   <input type="file" name="fileToUpload" id="fileToUpload">'+
                     '    <input type="submit" value="Upload Image" name="submit">'+
                     '<input type=hidden name="eventname" value='+this.title+'>'+
-                    '</form>'
+                    '</form>' + '<br> ppl Online: ' + this.rating;
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);
                 });
