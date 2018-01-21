@@ -25,7 +25,7 @@
 
     <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
         <h2>Create Event</h2>
-        <form action="http://c7b67d7a.ngrok.io/events" method="post">
+        <form action="http://c7b67d7a.ngrok.io/events" method="post" id="form1">
             Name: <br><input type="text" name="name"><br><br>
             Latitude: <br><input type="text" name="lat"><br><br>
             Longitude: <br><input type="text" name="lon"><br><br>
@@ -33,7 +33,7 @@
             Start time: <br><input type="time" name="startTime"><br><br>
             End time: <br><input type="time" name="endTime"><br><br>
 
-            <input type='hidden' name="username" value="elias" /> <!--TODO add username from get -->  
+            <input type='hidden' name="username" id="hidden1" value="" />
             <input type="submit" value="Submit">
         </form>
     </div>
@@ -52,6 +52,7 @@
         var markers = [];
         var infowindow;
         var map;
+        var loggedUser;
 
         //Tab control
         function openTab(evt, tabName) {
@@ -72,6 +73,10 @@
         $(document).ready(function () {
             console.log(">fct Document Ready");
 
+            var loggedUser = window.location.search.substr(1).split('=')[1];
+            document.getElementById('hidden1').value = loggedUser;
+            //console.log("!!!ussr: "+username);
+
             $.get("http://c7b67d7a.ngrok.io/events",receiveEvent)
             console.log("Send request for event list");
         });
@@ -80,6 +85,7 @@
         function receiveEvent(data, status){
             console.log(">fct Received Data");
             //alert("Data: " + data + "\nStatus: " + status);
+            
 
             for(var i=0; i< data.length; i++){
                 var marker = new google.maps.Marker({
@@ -90,7 +96,6 @@
                     eventDate: data[i].eventDate,
                     endTime: data[i].endTime,
                     startTime: data[i].startTime,
-                    draggable: true,
                     animation: google.maps.Animation.DROP,
                     map : map
                 });
@@ -98,7 +103,7 @@
                 google.maps.event.addListener(marker, 'click', function() {
                     console.log(this.title + "---"+this.eventDate);
                     var contentString = "<div class='black'><h2>"+this.title+"</h2><br>Live stream: <br>"+
-                    '<br><iframe id="myVideo" width="250" height="200" src="https://www.youtube.com/embed/dqbtwPymXC4?autoplay=1&loop=1&controls=0&showinfo=0&mute=1"></iframe>'+
+                    '<br><iframe id="myVideo" width="250" height="200" src="https://www.youtube.com/embed/pqFoK1A09cI?autoplay=1&loop=1&controls=0&showinfo=0&mute=1"></iframe>'+
                     "<p>Date: "+
                     this.eventDate+"<br>Start time: "+this.startTime+"<br>Organizer: "+this.organizer+"</html>"
                     infowindow.setContent(contentString);
@@ -119,7 +124,6 @@
             }
 
         }
-
 
         function initMap() {
             console.log(">fct Init Map")
