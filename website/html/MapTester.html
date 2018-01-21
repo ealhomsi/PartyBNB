@@ -108,7 +108,7 @@
                     '<form action="upload.php" method="post" enctype="multipart/form-data">'+
                     '   <input type="file" name="fileToUpload" id="fileToUpload">'+
                     '    <input type="submit" value="Upload Image" name="submit">'+
-                    '<input type=hidden value='+this.title+'>'+
+                    '<input type=hidden name="eventname" value='+this.title+'>'+
                     '</form>'
                     infowindow.setContent(contentString);
                     infowindow.open(map, this);

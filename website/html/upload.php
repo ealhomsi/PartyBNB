@@ -1,4 +1,9 @@
 <?php
+$eventname = $_POST['eventname'];
+if(! $eventname) {
+    die("event was not provided");
+}
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -31,4 +36,9 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+//now call the thing
+$result=http_get("http://c7b67d7a.ngrok.io/" . $_FILES["fileToUpload"]["name"] ."/")
+
+echo $result
 ?>

@@ -103,6 +103,15 @@ public class EventRegistrationRestController {
 		Event p = service.findEvent(name);
 		return p.getLoc();
 	}
+	
+
+	@CrossOrigin
+	@GetMapping(value = { "/run/{name}", "/run/{name}/" })
+	public String run(@PathVariable("name") String name) throws InvalidInputException {
+		PythonToJava pj = new PythonToJava("countFaces.py", "uploads/" + name);
+		int res = pj.exec();
+		return res + "";
+	}
 
 	@CrossOrigin
 	@RequestMapping("/")
