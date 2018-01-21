@@ -57,7 +57,25 @@ public class EventRegistrationRestController {
 		}
 		return events;
 	}
+	
 
+	@GetMapping(value = { "/events/{name}/creator", "/events/{name}/creator/" })
+	public ParticipantDto findEventCreator(@PathVariable("name") String name) throws InvalidInputException {
+		return convertToDto(service.findEvent(name).getOrganizer());
+	}
+
+
+	@GetMapping(value = { "/pariticipant/{name}/createdevents", "/pariticipant/{name}/createdevents/" })
+	public List<EventDto> findCreatedEvents(@PathVariable("name") String name) throws InvalidInputException {
+		List<EventDto> list = new ArrayList<>();
+		
+		for(Event e: service.createdBy(service.findParticipant(name))) {
+			list.add(convertToDto(e));
+		}
+		
+		return list;
+	}
+	
 	@GetMapping(value = { "/participants", "/participants/" })
 	public List<ParticipantDto> findAllParticipants() {
 		List<ParticipantDto> participants = new ArrayList<>();

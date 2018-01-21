@@ -52,6 +52,16 @@ public class EventRegistrationService {
 		return p;
 	}
 
+	public List<Event> createdBy(Participant p) {
+		List<Event> events = new ArrayList<>();
+		
+		for(Event tmp : rm.getEvents()) {
+			if(tmp.getOrganizer().getName().contentEquals(p.getName()))
+				events.add(tmp);
+		}
+		
+		return events;
+	}
 	public Event createEvent(String name, Date date, Time startTime, Time endTime, int rating, Location loc, Participant p) throws InvalidInputException {
 		if(name == null || date == null || startTime == null || endTime == null || loc == null || rating < 0) 
 			throw new InvalidInputException("Event name cannot be empty! Event date cannot be empty! Event start time cannot be empty! Event end time cannot be empty!");
