@@ -8,8 +8,11 @@ cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 log.basicConfig(filename='webcam.log',level=log.INFO)
 
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(sys.argv[1])
 anterior = 0
+
+sum=0
+total_frames=0
 
 while True:
     if not video_capture.isOpened():
@@ -17,8 +20,8 @@ while True:
         sleep(5)
         pass
 
-    # Capture frame-by-frame
     ret, frame = video_capture.read()
+    total_frames+=1
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -29,8 +32,7 @@ while True:
         minSize=(5, 5)
     )
 
-    print("I see %d faces"%(len(faces)))
-    # Draw a rectangle around the faces
+    sum+=len(faces)
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
@@ -39,16 +41,20 @@ while True:
         log.info("faces: "+str(len(faces))+" at "+str(dt.datetime.now()))
 
 
-    # Display the resulting frame
     cv2.imshow('Video', frame)
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    # Display the resulting frame
     cv2.imshow('Video', frame)
 
-# When everything is done, release the capture
+res=int(sum/total_frames)
+
+print(res)
+
+## release objects
 video_capture.release()
 cv2.destroyAllWindows()
+
+exit(res)
