@@ -15,6 +15,7 @@
         <button class="myButton tablinks" onclick="openTab(event, 'createevent')">Create Event</button>
         <button class="myButton tablinks" onclick="openTab(event, 'myevents')">My Events</button>
     </div>
+    <br><br>
 
     <div id="mapview" class="tabcontent" style="display:block">
         <h3>Look for nearby events!</h3><br>
@@ -24,6 +25,7 @@
     </div>
 
     <div id="createevent" class="tabcontent form-group" font-family: "Comic Sans MS">
+        <br><br><br>
         <h2>Create Event</h2>
         <form action="http://c7b67d7a.ngrok.io/events" method="post">
             Name: <br><input type="text" name="name"><br><br>
@@ -40,10 +42,14 @@
 
     <div id="myevents" class="tabcontent">
         <h3>My Events</h3>
+        <div id="resultEvents">
+        </div>
     </div>
 
 
     <div id="map"></div>
+
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqgf8KEOTpCrDnGKJGgzdILlP3-Qlhlto&callback=initMap">
     </script>

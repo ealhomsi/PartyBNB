@@ -267,5 +267,17 @@
       </loc>
       <organizer reference="4"/>
     </event>
+    <event id="87">
+      <name>Lost2</name>
+      <eventDate id="88">1996-01-01</eventDate>
+      <startTime id="89">22:00:00</startTime>
+      <endTime id="90">23:00:00</endTime>
+      <rating>0</rating>
+      <loc id="91">
+        <lon>-69.729959</lon>
+        <lat>42.235757</lat>
+      </loc>
+      <organizer reference="24"/>
+    </event>
   </events>
 </manager>
