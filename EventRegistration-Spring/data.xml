@@ -109,123 +109,132 @@
         <lat>32.2</lat>
       </loc>
     </participant>
+    <participant id="28">
+      <name>dfsas</name>
+      <username>fdas</username>
+      <password>afdd</password>
+      <loc id="29">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
   </participants>
-  <events id="28">
-    <event id="29">
+  <events id="30">
+    <event id="31">
       <name>party1</name>
-      <eventDate id="30">1995-12-08</eventDate>
-      <startTime id="31">10:44:00</startTime>
-      <endTime id="32">11:44:00</endTime>
+      <eventDate id="32">1995-12-08</eventDate>
+      <startTime id="33">10:44:00</startTime>
+      <endTime id="34">11:44:00</endTime>
       <rating>4</rating>
-      <loc id="33">
+      <loc id="35">
         <lon>45.344</lon>
         <lat>-74.4344</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="34">
+    <event id="36">
       <name>elias</name>
-      <eventDate id="35">1999-11-11</eventDate>
-      <startTime id="36">11:33:00</startTime>
-      <endTime id="37">11:34:00</endTime>
+      <eventDate id="37">1999-11-11</eventDate>
+      <startTime id="38">11:33:00</startTime>
+      <endTime id="39">11:34:00</endTime>
       <rating>0</rating>
-      <loc id="38">
+      <loc id="40">
         <lon>3.3</lon>
         <lat>33.33</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="39">
+    <event id="41">
       <name>sadfsafddfs</name>
-      <eventDate id="40">1311-11-11</eventDate>
-      <startTime id="41">13:01:00</startTime>
-      <endTime id="42">15:01:00</endTime>
+      <eventDate id="42">1311-11-11</eventDate>
+      <startTime id="43">13:01:00</startTime>
+      <endTime id="44">15:01:00</endTime>
       <rating>0</rating>
-      <loc id="43">
+      <loc id="45">
         <lon>33.3</lon>
         <lat>33.3</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="44">
+    <event id="46">
       <name>grd</name>
-      <eventDate id="45">1998-01-01</eventDate>
-      <startTime id="46">11:01:00</startTime>
-      <endTime id="47">13:00:00</endTime>
+      <eventDate id="47">1998-01-01</eventDate>
+      <startTime id="48">11:01:00</startTime>
+      <endTime id="49">13:00:00</endTime>
       <rating>0</rating>
-      <loc id="48">
+      <loc id="50">
         <lon>45.0</lon>
         <lat>56.0</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="49">
+    <event id="51">
       <name>grd</name>
-      <eventDate id="50">1998-01-01</eventDate>
-      <startTime id="51">11:01:00</startTime>
-      <endTime id="52">13:00:00</endTime>
+      <eventDate id="52">1998-01-01</eventDate>
+      <startTime id="53">11:01:00</startTime>
+      <endTime id="54">13:00:00</endTime>
       <rating>0</rating>
-      <loc id="53">
+      <loc id="55">
         <lon>45.0</lon>
         <lat>56.0</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="54">
+    <event id="56">
       <name>McGill Gerts</name>
-      <eventDate id="55">2018-01-23</eventDate>
-      <startTime id="56">21:01:00</startTime>
-      <endTime id="57">23:49:00</endTime>
+      <eventDate id="57">2018-01-23</eventDate>
+      <startTime id="58">21:01:00</startTime>
+      <endTime id="59">23:49:00</endTime>
       <rating>0</rating>
-      <loc id="58">
+      <loc id="60">
         <lon>45.5057</lon>
         <lat>-73.57644</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="59">
+    <event id="61">
       <name>McGill OAP</name>
-      <eventDate id="60">2018-01-20</eventDate>
-      <startTime id="61">20:00:00</startTime>
-      <endTime id="62">23:30:00</endTime>
+      <eventDate id="62">2018-01-20</eventDate>
+      <startTime id="63">20:00:00</startTime>
+      <endTime id="64">23:30:00</endTime>
       <rating>0</rating>
-      <loc id="63">
+      <loc id="65">
         <lon>-73.575652</lon>
         <lat>45.504013</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="64">
+    <event id="66">
       <name>Open Oratoire LIT</name>
-      <eventDate id="65">2018-01-20</eventDate>
-      <startTime id="66">20:00:00</startTime>
-      <endTime id="67">23:30:00</endTime>
+      <eventDate id="67">2018-01-20</eventDate>
+      <startTime id="68">20:00:00</startTime>
+      <endTime id="69">23:30:00</endTime>
       <rating>0</rating>
-      <loc id="68">
+      <loc id="70">
         <lon>-73.618521</lon>
         <lat>45.504013</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="69">
+    <event id="71">
       <name>Hackatown 2018</name>
-      <eventDate id="70">2018-01-20</eventDate>
-      <startTime id="71">08:00:00</startTime>
-      <endTime id="72">16:00:00</endTime>
+      <eventDate id="72">2018-01-20</eventDate>
+      <startTime id="73">08:00:00</startTime>
+      <endTime id="74">16:00:00</endTime>
       <rating>0</rating>
-      <loc id="73">
+      <loc id="75">
         <lon>45.492416</lon>
         <lat>-73.618521</lat>
       </loc>
       <organizer reference="4"/>
     </event>
-    <event id="74">
+    <event id="76">
       <name>Hackatown 2018</name>
-      <eventDate id="75">2018-01-20</eventDate>
-      <startTime id="76">08:00:00</startTime>
-      <endTime id="77">16:00:00</endTime>
+      <eventDate id="77">2018-01-20</eventDate>
+      <startTime id="78">08:00:00</startTime>
+      <endTime id="79">16:00:00</endTime>
       <rating>0</rating>
-      <loc id="78">
+      <loc id="80">
         <lon>-73.613033</lon>
         <lat>45.504361</lat>
       </loc>
