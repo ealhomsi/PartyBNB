@@ -113,8 +113,8 @@ public class EventRegistrationRestController {
 	 * CREATE
 	 */
 
-	@PostMapping(value = { "/participants/{name}", "/participants/{name}/" })
-	public ParticipantDto createParticipant(@PathVariable("name") String name, @RequestParam String username,
+	@PostMapping(value = { "/participants", "/participants/" })
+	public ParticipantDto createParticipant(@RequestParam String name, @RequestParam String username,
 			@RequestParam String password, @RequestParam double lon, @RequestParam double lan)
 			throws InvalidInputException {
 		String username2 = "" + username;
@@ -123,16 +123,16 @@ public class EventRegistrationRestController {
 		return convertToDto(participant);
 	}
 
-	@PostMapping(value = { "/events/{name}", "/events/{name}/" })
-	public EventDto createEvent(@PathVariable("name") String name, @RequestParam Date date,
+	@PostMapping(value = { "/events/", "/events" })
+	public EventDto createEvent(@RequestParam String name, @RequestParam Date date,
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime startTime,
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime endTime,
-			@RequestParam int rating, @RequestParam double lon, @RequestParam double lat, @RequestParam String username) throws InvalidInputException {
+			@RequestParam double lon, @RequestParam double lat, @RequestParam String username) throws InvalidInputException {
 		@SuppressWarnings("deprecation")
 		Time startTimeSql = new Time(startTime.getHour(), startTime.getMinute(), 0);
 		@SuppressWarnings("deprecation")
 		Time endTimeSql = new Time(endTime.getHour(), endTime.getMinute(), 0);
-		Event event = service.createEvent(name, date, startTimeSql, endTimeSql, rating, new Location(lon, lat), service.findParticipant(username));
+		Event event = service.createEvent(name, date, startTimeSql, endTimeSql, 0, new Location(lon, lat), service.findParticipant(username));
 		return convertToDto(event);
 	}
 
