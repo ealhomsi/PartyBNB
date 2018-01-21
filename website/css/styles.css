@@ -1,8 +1,11 @@
 body {
 	font-family: "Arial";
 	color: black;
+	
 }
-
+body {
+    background-image: url("../images/backGround.jpg");
+}
 
 input[type="submit"]{
     background-color: #060E3D;
