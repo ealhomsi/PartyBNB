@@ -107,7 +107,7 @@ public class EventRegistrationRestController {
 	@CrossOrigin
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/index.html\";</script>";
 	}
 
 	@CrossOrigin
@@ -122,13 +122,13 @@ public class EventRegistrationRestController {
 	 */
 
 	@PostMapping(value = { "/participants/login", "/participants/login/" })
-	public ParticipantDto login(@RequestParam String username, @RequestParam String password)
+	public String login(@RequestParam String username, @RequestParam String password)
 			throws InvalidInputException {
 		Participant participant = service.checkCredentials(username, password);
 		if(participant == null)
 			throw new InvalidInputException("Combination username and password is wrong");
 		
-		return convertToDto(participant);
+		return "<script> window.location = \"http://29a5f22b.ngrok.io/html/MapTester.html\";</script>";
 	}
 
 	@PostMapping(value = { "/participants", "/participants/" })
