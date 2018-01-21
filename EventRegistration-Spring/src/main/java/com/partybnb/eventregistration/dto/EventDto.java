@@ -3,29 +3,31 @@ package com.partybnb.eventregistration.dto;
 import java.sql.Date;
 import java.sql.Time;
 
-import com.partybnb.eventregistration.model.Event;
+import com.partybnb.eventregistration.model.Location;
 
 public class EventDto {
 	private String name;
 	private Date eventDate;
 	private Time startTime;
 	private Time endTime;
-	private ParticipantDto organizer;
+	private String organizer;
+	private Location loc;
 
 	public EventDto() {
 
 	}
 
 	public EventDto(String name) {
-		this(name, Date.valueOf("1971-01-01"), Time.valueOf("00:00:00"), Time.valueOf("23:59:59"), null);
+		this(name, Date.valueOf("1971-01-01"), Time.valueOf("00:00:00"), Time.valueOf("23:59:59"), null, null);
 	}
 
-	public EventDto(String name, Date eventDate, Time startTime, Time endTime, ParticipantDto p) {
+	public EventDto(String name, Date eventDate, Time startTime, Time endTime, ParticipantDto p, Location loc) {
 		this.name = name;
 		this.eventDate = eventDate;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.organizer = p;
+		this.organizer = p.getName();
+		this.loc = loc;
 	}
 
 
@@ -47,6 +49,23 @@ public class EventDto {
 
 	public Time getEndTime() {
 		return endTime;
+	}		
+
+
+	public String getOrganizer() {
+		return organizer;
+	}
+
+	public void setOrganizer(String organizer) {
+		this.organizer = organizer;
+	}
+
+	public Location getLoc() {
+		return loc;
+	}
+
+	public void setLoc(Location loc) {
+		this.loc = loc;
 	}
 
 	public void setEndTime(Time endTime) {

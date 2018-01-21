@@ -9,6 +9,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,17 +39,20 @@ public class EventRegistrationRestController {
 	/**
 	 * SHOW
 	 */
+	@CrossOrigin
 	@GetMapping(value = { "/participants/{name}", "/participants/{name}/" })
 	public ParticipantDto showParticipant(@PathVariable("name") String name) throws InvalidInputException {
 		return convertToDto(service.findParticipant(name));
 	}
 
+	@CrossOrigin
 	@GetMapping(value = { "/events/{name}", "/events/{name}/" })
 	public EventDto showEvent(@PathVariable("name") String name) throws InvalidInputException {
 		Event event = service.findEvent(name);
 		return convertToDto(event);
 	}
 
+	@CrossOrigin
 	@GetMapping(value = { "/events", "/events/" })
 	public List<EventDto> findAllEvents() throws InvalidInputException {
 		List<EventDto> events = new ArrayList<>();
@@ -57,25 +61,26 @@ public class EventRegistrationRestController {
 		}
 		return events;
 	}
-	
 
+	@CrossOrigin
 	@GetMapping(value = { "/events/{name}/creator", "/events/{name}/creator/" })
 	public ParticipantDto findEventCreator(@PathVariable("name") String name) throws InvalidInputException {
 		return convertToDto(service.findEvent(name).getOrganizer());
 	}
 
-
+	@CrossOrigin
 	@GetMapping(value = { "/pariticipant/{name}/createdevents", "/pariticipant/{name}/createdevents/" })
 	public List<EventDto> findCreatedEvents(@PathVariable("name") String name) throws InvalidInputException {
 		List<EventDto> list = new ArrayList<>();
-		
-		for(Event e: service.createdBy(service.findParticipant(name))) {
+
+		for (Event e : service.createdBy(service.findParticipant(name))) {
 			list.add(convertToDto(e));
 		}
-		
+
 		return list;
 	}
-	
+
+	@CrossOrigin
 	@GetMapping(value = { "/participants", "/participants/" })
 	public List<ParticipantDto> findAllParticipants() {
 		List<ParticipantDto> participants = new ArrayList<>();
@@ -84,25 +89,28 @@ public class EventRegistrationRestController {
 		}
 		return participants;
 	}
-	
+
+	@CrossOrigin
 	@GetMapping(value = { "/participants/locations/{name}", "/participants/locations/{name}/" })
 	public Location findLocationOfParticipant(@PathVariable("name") String name) throws InvalidInputException {
 		Participant p = service.findParticipant(name);
 		return p.getLoc();
 	}
-	
+
+	@CrossOrigin
 	@GetMapping(value = { "/events/locations/{name}", "/events/locations/{name}/" })
-	public Location findLocationOfEvent (@PathVariable("name") String name) throws InvalidInputException {
+	public Location findLocationOfEvent(@PathVariable("name") String name) throws InvalidInputException {
 		Event p = service.findEvent(name);
 		return p.getLoc();
 	}
 
-
+	@CrossOrigin
 	@RequestMapping("/")
 	public String index() {
 		return "Event registration application root. Web-based frontend is a TODO. Use the REST API to manage events and participants.\n";
 	}
 
+	@CrossOrigin
 	@GetMapping(value = { "/registrations/participant/{name}", "/registrations/participant/{name}/" })
 	public List<EventDto> getEventsOfParticipant(@PathVariable("name") ParticipantDto pDto) {
 		Participant p = convertToDomainObject(pDto);
@@ -113,13 +121,23 @@ public class EventRegistrationRestController {
 	 * CREATE
 	 */
 
+	@PostMapping(value = { "/participants/login", "/participants/login/" })
+	public ParticipantDto login(@RequestParam String username, @RequestParam String password)
+			throws InvalidInputException {
+		Participant participant = service.checkCredentials(username, password);
+		if(participant == null)
+			throw new InvalidInputException("Combination username and password is wrong");
+		
+		return convertToDto(participant);
+	}
+
 	@PostMapping(value = { "/participants", "/participants/" })
 	public ParticipantDto createParticipant(@RequestParam String name, @RequestParam String username,
-			@RequestParam String password, @RequestParam double lon, @RequestParam double lan)
+			@RequestParam String password, @RequestParam double lon, @RequestParam double lat)
 			throws InvalidInputException {
 		String username2 = "" + username;
 		String password2 = "" + password;
-		Participant participant = service.createParticipant(name, username2, password2, new Location(lon, lan));
+		Participant participant = service.createParticipant(name, username2, password2, new Location(lon, lat));
 		return convertToDto(participant);
 	}
 
@@ -127,12 +145,14 @@ public class EventRegistrationRestController {
 	public EventDto createEvent(@RequestParam String name, @RequestParam Date date,
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime startTime,
 			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "HH:mm") LocalTime endTime,
-			@RequestParam double lon, @RequestParam double lat, @RequestParam String username) throws InvalidInputException {
+			@RequestParam double lon, @RequestParam double lat, @RequestParam String username)
+			throws InvalidInputException {
 		@SuppressWarnings("deprecation")
 		Time startTimeSql = new Time(startTime.getHour(), startTime.getMinute(), 0);
 		@SuppressWarnings("deprecation")
 		Time endTimeSql = new Time(endTime.getHour(), endTime.getMinute(), 0);
-		Event event = service.createEvent(name, date, startTimeSql, endTimeSql, 0, new Location(lon, lat), service.findParticipant(username));
+		Event event = service.createEvent(name, date, startTimeSql, endTimeSql, 0, new Location(lon, lat),
+				service.findParticipant(username));
 		return convertToDto(event);
 	}
 
@@ -150,7 +170,11 @@ public class EventRegistrationRestController {
 	// Conversion methods (not part of the API)
 	private EventDto convertToDto(Event e) {
 		// In simple cases, the mapper service is convenient
-		return modelMapper.map(e, EventDto.class);
+		EventDto d = modelMapper.map(e, EventDto.class);
+		d.setLoc(e.getLoc());
+		d.setOrganizer(e.getOrganizer().getName());
+		;
+		return d;
 	}
 
 	private ParticipantDto convertToDto(Participant p) {

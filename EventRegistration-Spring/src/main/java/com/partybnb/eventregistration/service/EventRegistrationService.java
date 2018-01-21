@@ -26,6 +26,13 @@ public class EventRegistrationService {
 		return name == null || name.trim().equals("");
 	}
 
+	public Participant checkCredentials(String username, String password) {
+		for(Participant p: rm.getParticipants()) {
+			if(p.getUsername().contentEquals(username) && p.getPassword().contentEquals(password))
+				return p;
+		}
+		return null;
+	}
 	public Location getParticipantLocation(String name) throws InvalidInputException {
 		Participant p = findParticipant(name) ;
 		if(p == null)
@@ -67,8 +74,6 @@ public class EventRegistrationService {
 			throw new InvalidInputException("Event name cannot be empty! Event date cannot be empty! Event start time cannot be empty! Event end time cannot be empty!");
 		else if (name.trim().contentEquals(""))
 			throw new InvalidInputException("Event name cannot be empty!");				
-		else if (startTime.compareTo(endTime) > 0)
-			throw new InvalidInputException("Event end time cannot be before event start time!");
 		
 		Event e = new Event(name, date, startTime, endTime, rating, loc, p);
 		rm.addEvent(e);

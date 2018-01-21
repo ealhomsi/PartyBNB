@@ -1,45 +1,79 @@
+body{
+    background-image: url("http://globalmedicalco.com/photos/globalmedicalco/19/90221.jpg");
+    background-size: cover;
+}
+
+#title {
+    text-align: center;
+    position: center;
+    color:white;
+}
+
+#title h1 {
+    font-size: 10em;
+}
+#title h3 {
+    font-size: 3em;
+}
 input[type=text], input[type=password]{
-    width: 100%;
+    clear:both;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
+    border-radius: 1em;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
+
 button{
-    background-color: #4caf50;
+    background-color: #060E3D;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    display:block;
+    margin:auto;
+    border-radius: 1em;
+    display:inline-block;
+
 }
 
 button:hover{
     opacity: 0.8;
 }
 
+#mainLogo {
+    width:30%;
+    margin-left:4.3em;
+}
+
 .cancelbtn{
     width: auto;
     padding: 10px 8px;
-    background-color: #f44336;
+    background-color: #AC3933;
 }
 
 .imgcontainer{
     text-align: center;
     margin: 24px 0 12px 0;
+    width:100%;
+    text-align:center;
     position: relative;
 }
 
+
+
 img.avatar{
-    width: 40%;
+    width: 30%;
     border-radius: 50%;
 }
 
 .container{
     padding: 16px;
+    text-align:center;
+    width:100%;
 }
 
 span.psw{
@@ -50,6 +84,7 @@ span.psw{
 .modal{
     display: none;
     position: fixed;
+    text-align:center;
     z-index: 1;
     left: 0;
     top: 0;
@@ -65,7 +100,9 @@ span.psw{
     background-color: #e6e1e1;
     margin: 5% auto 15% auto;
     border: 1px solid #888888;
-    width: 80%;
+    text-align:center;
+    padding:auto auto;
+    width: 30%;
 }
 
 .close{
@@ -130,6 +167,6 @@ span.psw{
         float: none;
     }
     .cancelbtn{
-        width: 100%
     }
 }
+
