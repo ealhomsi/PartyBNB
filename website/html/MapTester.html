@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'mapview')">Event Map</button>
+        <button class="tablinks" onclick="openTab(event, 'createevent')">Create Event</button>
+        <button class="tablinks" onclick="openTab(event, 'myevents')">My Events</button>
+    </div>
+
+    <div id="mapview" class="tabcontent" style="display:block">
+        <h3>Map</h3>
+        <div id="map"></div>
+    </div>
+
+    <div id="createevent" class="tabcontent">
+        <h3>Create Event</h3>
+    </div>
+
+    <div id="myevents" class="tabcontent">
+        <h3>My Events</h3>
+    </div>
+
+
+    <div id="map"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqgf8KEOTpCrDnGKJGgzdILlP3-Qlhlto&callback=initMap">
+    </script>
+    <script>
+        var montreal = { lat: 45.506485, lng: -73.612543 }
+        var markers = [];
+        var map;
+
+        //Tab control
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+
+        $(document).ready(function () {
+            console.log(">fct Document Ready");
+
+            //TODO remove
+            return;
+            $.get("getEventsURL",receiveEvent)
+        });
+
+        //Get executed after info about event was received, after page was loaded
+        function receiveEvent(data, status){
+            console.log(">fct Received Data");
+            alert("Data: " + data + "\nStatus: " + status);
+
+            for(var i=0; i< data.length; i++){
+                var marker = new google.maps.Marker({
+                    position : data[i].position,
+                    title : data[i].name,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    map : map
+                });
+                markers.push(marker);
+            }
+        }
+
+
+        
+        function initMap() {
+            console.log(">fct Init Map")
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: montreal,
+                zoom: 12
+            });
+
+            var marker = new google.maps.Marker({
+                position: montreal,
+                title: "Polytechnique Pin",
+                map: map
+            });
+
+            
+
+            marker.addListener('click', function() {
+                var contentString = "<html>"+marker.title+"</html>"
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                infowindow.open(map, marker);
+            });
+
+            //marker.addListener('click', toggleBounce);
+            
+        }
+        
+        //Toggle a bounce animation, not currently used
+        function toggleBounce(marker) {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+
+        //TODO
+        /*
+        - Get event info
+        - Add event
+        - Choose info and pin icon ?
+        - Add image / video
+        */
+
+        
+    </script>
+    
+  </body>
+</html>
