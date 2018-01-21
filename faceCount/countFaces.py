@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
 import cv2
 import sys
+import os
 import logging as log
 import datetime as dt
 from time import sleep
@@ -7,6 +9,18 @@ from time import sleep
 cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 log.basicConfig(filename='webcam.log',level=log.INFO)
+
+if os.path.splitext(sys.argv[1])[1]=='.jpg':
+    image=cv2.imread(sys.argv[1],0)
+    faces = faceCascade.detectMultiScale(
+        image,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(5, 5)
+    )
+    res=len(faces)
+    print(res)
+    exit(res)
 
 video_capture = cv2.VideoCapture(sys.argv[1])
 anterior = 0
