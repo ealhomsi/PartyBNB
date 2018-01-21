@@ -1,0 +1,235 @@
+<manager id="1">
+  <registrations id="2"/>
+  <participants id="3">
+    <participant id="4">
+      <name>elias</name>
+      <username>1</username>
+      <password>2</password>
+      <loc id="5">
+        <lon>0.0</lon>
+        <lat>0.0</lat>
+      </loc>
+    </participant>
+    <participant id="6">
+      <name>elias</name>
+      <username>1</username>
+      <password>2</password>
+      <loc id="7">
+        <lon>0.0</lon>
+        <lat>0.0</lat>
+      </loc>
+    </participant>
+    <participant id="8">
+      <name>elias</name>
+      <username>1</username>
+      <password>2</password>
+      <loc id="9">
+        <lon>0.0</lon>
+        <lat>0.0</lat>
+      </loc>
+    </participant>
+    <participant id="10">
+      <name>elias</name>
+      <username>1</username>
+      <password>2a</password>
+      <loc id="11">
+        <lon>0.0</lon>
+        <lat>0.0</lat>
+      </loc>
+    </participant>
+    <participant id="12">
+      <name>elias</name>
+      <username>sexyboy</username>
+      <password>pass</password>
+      <loc id="13">
+        <lon>3.3</lon>
+        <lat>3.3</lat>
+      </loc>
+    </participant>
+    <participant id="14">
+      <name>elias22</name>
+      <username>sexyboy</username>
+      <password>pass</password>
+      <loc id="15">
+        <lon>3.3</lon>
+        <lat>3.3</lat>
+      </loc>
+    </participant>
+    <participant id="16">
+      <name>elias322</name>
+      <username>sexyboy</username>
+      <password>pass</password>
+      <loc id="17">
+        <lon>3.3</lon>
+        <lat>3.3</lat>
+      </loc>
+    </participant>
+    <participant id="18">
+      <name>elisa</name>
+      <username>asdf</username>
+      <password>afds</password>
+      <loc id="19">
+        <lon>3.3</lon>
+        <lat>3.33</lat>
+      </loc>
+    </participant>
+    <participant id="20">
+      <name>user3</name>
+      <username>ASDFASFD</username>
+      <password>sfdafdfa</password>
+      <loc id="21">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+    <participant id="22">
+      <name>andreekaba</name>
+      <username>andreekaba</username>
+      <password>andreekaba</password>
+      <loc id="23">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+    <participant id="24">
+      <name>anthony</name>
+      <username>tonysp</username>
+      <password>alpine</password>
+      <loc id="25">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+    <participant id="26">
+      <name>newuser</name>
+      <username>newuser</username>
+      <password>newuser</password>
+      <loc id="27">
+        <lon>33.3</lon>
+        <lat>32.2</lat>
+      </loc>
+    </participant>
+  </participants>
+  <events id="28">
+    <event id="29">
+      <name>party1</name>
+      <eventDate id="30">1995-12-08</eventDate>
+      <startTime id="31">10:44:00</startTime>
+      <endTime id="32">11:44:00</endTime>
+      <rating>4</rating>
+      <loc id="33">
+        <lon>45.344</lon>
+        <lat>-74.4344</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="34">
+      <name>elias</name>
+      <eventDate id="35">1999-11-11</eventDate>
+      <startTime id="36">11:33:00</startTime>
+      <endTime id="37">11:34:00</endTime>
+      <rating>0</rating>
+      <loc id="38">
+        <lon>3.3</lon>
+        <lat>33.33</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="39">
+      <name>sadfsafddfs</name>
+      <eventDate id="40">1311-11-11</eventDate>
+      <startTime id="41">13:01:00</startTime>
+      <endTime id="42">15:01:00</endTime>
+      <rating>0</rating>
+      <loc id="43">
+        <lon>33.3</lon>
+        <lat>33.3</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="44">
+      <name>grd</name>
+      <eventDate id="45">1998-01-01</eventDate>
+      <startTime id="46">11:01:00</startTime>
+      <endTime id="47">13:00:00</endTime>
+      <rating>0</rating>
+      <loc id="48">
+        <lon>45.0</lon>
+        <lat>56.0</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="49">
+      <name>grd</name>
+      <eventDate id="50">1998-01-01</eventDate>
+      <startTime id="51">11:01:00</startTime>
+      <endTime id="52">13:00:00</endTime>
+      <rating>0</rating>
+      <loc id="53">
+        <lon>45.0</lon>
+        <lat>56.0</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="54">
+      <name>McGill Gerts</name>
+      <eventDate id="55">2018-01-23</eventDate>
+      <startTime id="56">21:01:00</startTime>
+      <endTime id="57">23:49:00</endTime>
+      <rating>0</rating>
+      <loc id="58">
+        <lon>45.5057</lon>
+        <lat>-73.57644</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="59">
+      <name>McGill OAP</name>
+      <eventDate id="60">2018-01-20</eventDate>
+      <startTime id="61">20:00:00</startTime>
+      <endTime id="62">23:30:00</endTime>
+      <rating>0</rating>
+      <loc id="63">
+        <lon>-73.575652</lon>
+        <lat>45.504013</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="64">
+      <name>Open Oratoire LIT</name>
+      <eventDate id="65">2018-01-20</eventDate>
+      <startTime id="66">20:00:00</startTime>
+      <endTime id="67">23:30:00</endTime>
+      <rating>0</rating>
+      <loc id="68">
+        <lon>-73.618521</lon>
+        <lat>45.504013</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="69">
+      <name>Hackatown 2018</name>
+      <eventDate id="70">2018-01-20</eventDate>
+      <startTime id="71">08:00:00</startTime>
+      <endTime id="72">16:00:00</endTime>
+      <rating>0</rating>
+      <loc id="73">
+        <lon>45.492416</lon>
+        <lat>-73.618521</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+    <event id="74">
+      <name>Hackatown 2018</name>
+      <eventDate id="75">2018-01-20</eventDate>
+      <startTime id="76">08:00:00</startTime>
+      <endTime id="77">16:00:00</endTime>
+      <rating>0</rating>
+      <loc id="78">
+        <lon>-73.613033</lon>
+        <lat>45.504361</lat>
+      </loc>
+      <organizer reference="4"/>
+    </event>
+  </events>
+</manager>
